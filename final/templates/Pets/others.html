@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %} Lista de perros {% endblock %}
+{% block title %} Lista de otros animales {% endblock %}
 
 {% block body %} 
-<h1>Nuestos perros</h1>
+<h1>Otros animales</h1>
 
 
-    {% for dogs in dogs %}
+    {% for others in others %}
         
     <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{dogs.name}}</h5> 
-          <p class="card-text">Nacido en: {{dogs.birth}}</p>
-            <p> {% if dogs.vaccine == True %}
+          <h5 class="card-title">{{others.name}}</h5> 
+          <p class="card-text">Nacido en: {{others.birth}}</p>
+            <p> {% if cats.vaccine == True %}
                 Está vacunado
                 {% else %}
                 No está vacunado
                 {% endif %}
             </p>
-            <p>{% if dogs.castrated == True %}
+            <p>{% if others.castrated == True %}
                 Está castrado
                 {% else %}
                 No está castrado
@@ -29,4 +29,7 @@
         </div>
       </div>
     {% endfor %}
+    <a href="/mascotas/nuevo-otro/">
+      <button>Agregar</button>
+    </a> 
 {% endblock %}

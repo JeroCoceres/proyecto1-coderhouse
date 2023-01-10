@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %} Lista de perros {% endblock %}
+
+{% block body %} 
+<h1>Nuestos perros</h1>
+
+
+    {% for dogs in dogs %}
+        
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{dogs.name}}</h5> 
+          <p class="card-text">Nacido en: {{dogs.birth}}</p>
+            <p> {% if dogs.vaccine == True %}
+                Está vacunado
+                {% else %}
+                No está vacunado
+                {% endif %}
+            </p>
+            <p>{% if dogs.castrated == True %}
+                Está castrado
+                {% else %}
+                No está castrado
+                {% endif %}
+            </p>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    {% endfor %}
+
+    <a href="/mascotas/nuevo-perro/">
+      <button>Agregar perro</button>
+    </a> 
+{% endblock %}

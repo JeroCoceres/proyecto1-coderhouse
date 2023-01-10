@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %} Lista de gatos {% endblock %}
+
+{% block body %} 
+<h1>Nuestos gatos</h1>
+
+
+    {% for cats in cats %}
+        
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{cats.name}}</h5> 
+          <p class="card-text">Nacido en: {{cats.birth}}</p>
+            <p> {% if cats.vaccine == True %}
+                Está vacunado
+                {% else %}
+                No está vacunado
+                {% endif %}
+            </p>
+            <p>{% if cats.castrated == True %}
+                Está castrado
+                {% else %}
+                No está castrado
+                {% endif %}
+            </p>
+          <a href="#" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    {% endfor %}
+    <a href="/mascotas/nuevo-gato/">
+      <button>Agregar gato</button>
+    </a> 
+{% endblock %}
