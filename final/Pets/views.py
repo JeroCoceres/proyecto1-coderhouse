@@ -66,17 +66,29 @@ def create_other(request):
             return render(request,"Pets/new_others.html",context={})
 
 def list_dogs(request):
-    all_dogs = dogs.objects.all()
+    if "search" in request.GET:
+        search = request.GET["search"]
+        all_dogs = dogs.objects.filter(name__icontains=search)
+    else:
+        all_dogs = dogs.objects.all()
     context = {"dogs":all_dogs}
     return render(request, "Pets/dogs.html",context= context)
 
 def list_cats(request):
-    all_cats = cats.objects.all()
+    if "search" in request.GET:
+        search = request.GET["search"]
+        all_cats = cats.objects.filter(name__icontains=search)
+    else:
+        all_cats = cats.objects.all()
     context = {"cats" : all_cats}
     return render(request, "Pets/cats.html",context=context)
 
 def list_more_pets(request):
-    all_more_pets = more_pets.objects.all()
+    if "search" in request.GET:
+        search = request.GET["search"]
+        all_more_pets = dogs.objects.filter(name__icontains=search)
+    else:
+        all_more_pets = more_pets.objects.all()
     context = {"others" : all_more_pets}
     return render(request, "Pets/others.html",context=context)
 

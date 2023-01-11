@@ -3,4 +3,10 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render (request, "inicio.html" , context={})
+    return render (request, "index.html" , context={})
+    
+def us(request):
+    return render (request, "Us.html" , context={})
+
+def developing(request):
+    return render (request, "developing.html" , context={})    
