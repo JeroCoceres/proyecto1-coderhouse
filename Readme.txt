@@ -20,6 +20,10 @@ Los mismos se cargarán desde un formulario realizado con Django Forms. Futurame
 tambien me gustaría agregar una fecha de adopción (como registro de aquellos animales que ya fueron adoptados, en caso de dejar el formulario vacio, la pagina mostraría como que el animal esta disponible aún)
 
 Desde cada html de cada categoría (Perros, Gatos u Otros), habrá un boton que permitirá cargar un nuevo elemento. Este boton agregará el elemento y mostrará un cartel de elemento creado.
+<<<<<<< HEAD
 Dentro de el html de cada categoría encontraremos en la navbar, el buscador. El mismo buscará elementos de cada categoría (ejemplo el buscador desde perros solo mostrara perros que contengan
 esas palabras)
 
+=======
+Dentro de el html de cada categoría encontraremos en la navbar, el buscador. El mismo buscará elementos de cada categoría (ejemplo el buscador desde perros solo mostrara perros que contengan esas palabras)
+>>>>>>> fb4096d53333859648d13cde484ef188dfc9ef27
