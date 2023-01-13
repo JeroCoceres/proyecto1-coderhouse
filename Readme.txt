@@ -19,5 +19,7 @@ Cada animal tendrá la siguiente información:    Nombre (mediante un CharField)
 Los mismos se cargarán desde un formulario realizado con Django Forms. Futuramente quiero agregar la edad de cada animal (Donde agreguemos solo la fecha de nacimiento y automaticamente nos calcule la edad),
 tambien me gustaría agregar una fecha de adopción (como registro de aquellos animales que ya fueron adoptados, en caso de dejar el formulario vacio, la pagina mostraría como que el animal esta disponible aún)
 
-Desde cada html de cada categoría (Perros, Gatos u Otros), habrá un boton que permitirá cargar un nuevo elemento. 
+Desde cada html de cada categoría (Perros, Gatos u Otros), habrá un boton que permitirá cargar un nuevo elemento. Este boton agregará el elemento y mostrará un cartel de elemento creado.
+Dentro de el html de cada categoría encontraremos en la navbar, el buscador. El mismo buscará elementos de cada categoría (ejemplo el buscador desde perros solo mostrara perros que contengan
+esas palabras)
 
