@@ -9,40 +9,47 @@
 </form>
 {% endblock %}
 
-{% block body %} 
-<h1>Nuestos perros</h1>
+{% block body%}
+<h1>Nuestros Perros</h1>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for dogs in dogs %}
 
 
-    {% for dogs in dogs %}
-        
-    <div class="card" style="width: 18rem;">
-        <img src="https://definicion.de/wp-content/uploads/2013/03/perro-1.jpg" class="card-img-top" alt="...">
+    <div class="col">
+      <div class="card" style="width: 24rem;">
+        <img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/15665/production/_107435678_perro1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{dogs.name}}</h5> 
+          <h5 class="card-title">{{dogs.name}}</h5>
+          <p class="card-text">{% if dogs.vaccine == True %}
+            Está vacunado
+            {% else %}
+            No está vacunado
+            {% endif %}</p>
+          <p class="card-text">{% if dogs.castrated == True %}
+            Está castrado
+            {% else %}
+            No está castrado
+            {% endif %} </p>
+            
+            {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+            <a href="/pets/update-dog/{{cats.pk}}/" class="btn btn-primary" >Editar</a>
+            <a href="/pets/delete-dog/{{cats.pk}}/" class="btn btn-danger">Borrar</a>
+            {% endif %}
+            {% endif %}
 
-            <p> {% if dogs.vaccine == True %}
-                Está vacunado
-                {% else %}
-                No está vacunado
-                {% endif %}
-            </p>
-            <p>{% if dogs.castrated == True %}
-                Está castrado
-                {% else %}
-                No está castrado
-                {% endif %}
-            </p>
-          <a href="/pets/update-dog/{{dogs.pk}}/" class="btn btn-primary" >Editar</a>
-          <a href="/pets/delete-dog/{{dogs.pk}}/" class="btn btn-danger">Borrar</a>
         </div>
       </div>
-    {% endfor %}
+    </div>
 
-
-    
-    <a href="/pets/new-dog/">
-      <button>Agregar perro</button>
-    </a> 
-
+  {% endfor %}
+</div>
+  {% if request.user.is_authenticated %}
+  {% if request.user.is_superuser %}
+  <a href="/pets/new-dog/">
+    <button>Agregar perro</button>
+    {% endif %}
+    {% endif %}
+  </a> 
 
 {% endblock %}

@@ -12,32 +12,44 @@
 {% block body %} 
 <h1>Nuestos gatos</h1>
 
-
+<div class="row row-cols-1 row-cols-md-3 g-4">
     {% for cats in cats %}
-        
-    <div class="card" style="width: 18rem;">
-        <img src="https://img.freepik.com/foto-gratis/gato-rojo-o-blanco-i-estudio-blanco_155003-13189.jpg?w=740&t=st=1674155028~exp=1674155628~hmac=d961d06706df39933313b7fddf0215e11ff0fc0e1fb1be8742afda409dfd69e1" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{cats.name}}</h5> 
 
-            <p> {% if cats.vaccine == True %}
-                Está vacunado
-                {% else %}
-                No está vacunado
-                {% endif %}
-            </p>
-            <p>{% if cats.castrated == True %}
-                Está castrado
-                {% else %}
-                No está castrado
-                {% endif %}
-            </p>
-            <a href="/pets/update-cat/{{cats.pk}}/" class="btn btn-primary" >Editar</a>
-            <a href="/pets/delete-cat/{{cats.pk}}/" class="btn btn-danger">Borrar</a>
+
+      <div class="col">
+        <div class="card" style="width: 24rem;">
+          <img src="https://img.freepik.com/foto-gratis/gato-rojo-o-blanco-i-estudio-blanco_155003-13189.jpg?w=740&t=st=1674325304~exp=1674325904~hmac=486457781d6e2cd203f92dd1f95b87e5c9e4e6069e4ce3ab94a92828d81536d2" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{cats.name}}</h5>
+            <p class="card-text">{% if cats.vaccine == True %}
+              Está vacunado
+              {% else %}
+              No está vacunado
+              {% endif %}</p>
+            <p class="card-text">{% if cats.castrated == True %}
+              Está castrado
+              {% else %}
+              No está castrado
+              {% endif %} </p>
+              
+              {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <a href="/pets/update-cat/{{cats.pk}}/" class="btn btn-primary" >Editar</a>
+              <a href="/pets/delete-cat/{{cats.pk}}/" class="btn btn-danger">Borrar</a>
+              {% endif %}
+              {% endif %}
+
+          </div>
         </div>
       </div>
+
     {% endfor %}
-    <a href="/mascotas/nuevo-gato/">
+  </div>
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_superuser %}
+    <a href="/pets/new-cat/">
       <button>Agregar gato</button>
+      {% endif %}
+      {% endif %}
     </a> 
 {% endblock %}
