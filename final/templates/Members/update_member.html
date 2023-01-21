@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %} Editar integrante {% endblock %}
+
+{% block body %} 
+<h1>Editar integrante</h1>
+
+{% if request.method == "GET" %}
+
+    <form action="" method="POST">
+        
+        {% csrf_token %}
+
+        <table>
+        {{form.as_table}}
+        </table>
+        
+        <input type="submit" value="Aceptar">
+
+        {% else %}
+
+        <p>Miembro modificado</p>
+
+        {% endif %}
+        
+        {% if form_errors %}
+        <h2>Error:</h2>
+            {{ form_errors }}
+
+        {% endif %}
+
+    </form>
+
+
+{% endblock %}

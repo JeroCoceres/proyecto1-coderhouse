@@ -1,42 +1,48 @@
 {% extends "base.html" %}
 
-{% block title %} Lista de gatos {% endblock %}
+{% block title %} Lista de perros {% endblock %}
 
 {% block header %} 
-<form class="form-inline my-2 my-lg-0"action="/mascotas/gatos/" method="GET">
+<form class="form-inline my-2 my-lg-0" action="/mascotas/perros/" method="GET">
   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 </form>
 {% endblock %}
 
 {% block body %} 
-<h1>Nuestos gatos</h1>
+<h1>Nuestos perros</h1>
 
 
-    {% for cats in cats %}
+    {% for dogs in dogs %}
         
     <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="https://definicion.de/wp-content/uploads/2013/03/perro-1.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{cats.name}}</h5> 
-          <p class="card-text">Nacido en: {{cats.birth}}</p>
-            <p> {% if cats.vaccine == True %}
+          <h5 class="card-title">{{dogs.name}}</h5> 
+
+            <p> {% if dogs.vaccine == True %}
                 Está vacunado
                 {% else %}
                 No está vacunado
                 {% endif %}
             </p>
-            <p>{% if cats.castrated == True %}
+            <p>{% if dogs.castrated == True %}
                 Está castrado
                 {% else %}
                 No está castrado
                 {% endif %}
             </p>
-          <a href="#" class="btn btn-primary">Ver</a>
+          <a href="/pets/update-dog/{{dogs.pk}}/" class="btn btn-primary" >Editar</a>
+          <a href="/pets/delete-dog/{{dogs.pk}}/" class="btn btn-danger">Borrar</a>
         </div>
       </div>
     {% endfor %}
-    <a href="/mascotas/nuevo-gato/">
-      <button>Agregar gato</button>
+
+
+    
+    <a href="/pets/new-dog/">
+      <button>Agregar perro</button>
     </a> 
+
+
 {% endblock %}

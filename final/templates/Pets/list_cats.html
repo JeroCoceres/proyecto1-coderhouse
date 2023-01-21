@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %} Lista de gatos {% endblock %}
+
+{% block header %} 
+<form class="form-inline my-2 my-lg-0"action="/mascotas/gatos/" method="GET">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+{% endblock %}
+
+{% block body %} 
+<h1>Nuestos gatos</h1>
+
+
+    {% for cats in cats %}
+        
+    <div class="card" style="width: 18rem;">
+        <img src="https://img.freepik.com/foto-gratis/gato-rojo-o-blanco-i-estudio-blanco_155003-13189.jpg?w=740&t=st=1674155028~exp=1674155628~hmac=d961d06706df39933313b7fddf0215e11ff0fc0e1fb1be8742afda409dfd69e1" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{cats.name}}</h5> 
+
+            <p> {% if cats.vaccine == True %}
+                Está vacunado
+                {% else %}
+                No está vacunado
+                {% endif %}
+            </p>
+            <p>{% if cats.castrated == True %}
+                Está castrado
+                {% else %}
+                No está castrado
+                {% endif %}
+            </p>
+            <a href="/pets/update-cat/{{cats.pk}}/" class="btn btn-primary" >Editar</a>
+            <a href="/pets/delete-cat/{{cats.pk}}/" class="btn btn-danger">Borrar</a>
+        </div>
+      </div>
+    {% endfor %}
+    <a href="/mascotas/nuevo-gato/">
+      <button>Agregar gato</button>
+    </a> 
+{% endblock %}

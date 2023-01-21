@@ -4,4 +4,11 @@
 
 {% block body %} 
 <h1> Pantalla de Inicio </h1>
+
+{{request.user.is_authenticated}}
+
+{% if message %}
+    <h2>{{message}}</h2>
+{% endif %}
+
 {% endblock %}

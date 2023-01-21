@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} Lista de Miembros {% endblock %}
+
+{% block header %} 
+<form class="form-inline my-2 my-lg-0" action="/Members/members/" method="GET">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+{% endblock %}
+
+{% block body %} 
+<h1>Nosotros</h1>
+
+
+    {% for members in object_list %}
+        
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{members.name}}</h5> 
+          <p class="card-text">Lorem Ipsum</p>
+
+          <a href="/members/update-member/{{members.pk}}/" class="btn btn-primary" >Editar</a>
+          <a href="/members/delete-member/{{members.pk}}/" class="btn btn-danger">Borrar</a>
+        </div>
+      </div>
+    {% endfor %}
+
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_superuser %}
+    <a href="/members/new_member/">
+      <button>Agregar Integrante</button>
+    </a> 
+    {% endif %}
+    {% endif %}
+    
+{% endblock %}

@@ -26,22 +26,37 @@
                     Nuestras mascotas
                   </a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/mascotas/perros/">Perros</a>
-                    <a class="dropdown-item" href="/mascotas/gatos/">Gatos</a>
-                    <a class="dropdown-item" href="/mascotas/otros/">Otros</a>
+                    <a class="dropdown-item" href="/pets/list_dogs/">Perros</a>
+                    <a class="dropdown-item" href="/pets/list_cats/">Gatos</a>
+                    <a class="dropdown-item" href="/pets/list_others/">Otros</a>
                   </div>
                 </li>
+                <li class="nav-item active" style="margin-right: 1000px;">
+                  <a class="nav-link" href="/members/members">Quienes somos <span class="sr-only">(current)</span></a>
+                </li>
+
+
+                {% if request.user.is_authenticated %}
                 <li class="nav-item active">
-                  <a class="nav-link" href="/nosotros/">Quienes somos <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/users/logout/">Logout <span class="sr-only">(current)</span></a>
+                </li>
+
+                {% else %}
+                <li class="nav-item active">
+                  <a class="nav-link" href="/users/login">Login <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/users/signup/">Singup <span class="sr-only">(current)</span></a>
                 </li>
               </ul>
+              {% endif %}
               {% block header %} 
 
               {% endblock %}
             </div>
           </nav>
     </header>
-
+    
     {% block body %}
 
     {% endblock %}

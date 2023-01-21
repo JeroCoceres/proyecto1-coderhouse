@@ -16,10 +16,9 @@
     {% for others in others %}
         
     <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Amazona_auropalliata_-Roatan_Tropical_Butterfly_Garden-8a.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{others.name}}</h5> 
-          <p class="card-text">Nacido en: {{others.birth}}</p>
             <p> {% if cats.vaccine == True %}
                 Está vacunado
                 {% else %}
@@ -32,11 +31,12 @@
                 No está castrado
                 {% endif %}
             </p>
-          <a href="#" class="btn btn-primary">Ver</a>
+            <a href="/pets/update-other/{{others.pk}}/" class="btn btn-primary" >Editar</a>
+            <a href="/pets/delete-other/{{others.pk}}/" class="btn btn-danger">Borrar</a>
         </div>
       </div>
     {% endfor %}
-    <a href="/mascotas/nuevo-otro/">
+    <a href="/pets/new-other/">
       <button>Agregar</button>
     </a> 
 {% endblock %}

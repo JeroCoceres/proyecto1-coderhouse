@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} Borrar gato {% endblock %}
+
+{% block body %} 
+<h1>Borrar {{object.name}}?</h1>
+
+    <p>Seguro que desea eliminar?</p>
+    <form action="" method ="POST">
+    {% csrf_token %}
+    <input type="submit" value="Borrar">
+
+
+
+    </form>
+
+{% endblock %}
+
+
