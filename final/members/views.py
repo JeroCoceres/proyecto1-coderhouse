@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from members.models import  Members
 from django.views.generic import ListView,CreateView,DeleteView
-from members.form import membersForm
+from members.form import MembersForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
@@ -11,11 +11,29 @@ class membersListView(ListView):
     template_name = "Members/members.html"
 
 
-class membersCreateView(LoginRequiredMixin,CreateView):
-    model = Members
-    template_name = "Members/new_member.html"
-    fields = "__all__"
-    success_url = "/members/members"
+def membersCreateView(request):
+    if request.method == "GET":
+        context = {
+            "form":MembersForm
+    }
+        return render (request,"Members/new_member.html",context=context)
+    elif request.method == "POST":
+        form = MembersForm(request.POST) 
+        if form.is_valid():
+            Members.objects.create(
+                name = form.cleaned_data["name"],
+                job = form.cleaned_data["job"],
+                is_active = form.cleaned_data["is_active"],
+                since = form.cleaned_data["since"]
+            )
+            return render (request,"Members/new_member.html",context={})
+        else:
+            context = {
+                "form_errors":form.errors,
+                "form":form
+            }
+            return render (request,"Members/new_member.html",context=context)
+
 
 class membersDeleteView(LoginRequiredMixin,DeleteView):
     model = Members
@@ -28,7 +46,7 @@ def update_member(request, pk):
     member = Members.objects.get(pk=pk)
     if request.method == "GET":
         context = {
-            "form" : membersForm(
+            "form" : MembersForm(
                 initial={
                     "name":member.name,
                     "job":member.job,
@@ -38,7 +56,7 @@ def update_member(request, pk):
         }
         return render(request,"Members/update_member.html",context=context)
     elif request.method == "POST":
-        form = membersForm(request.POST)
+        form = MembersForm(request.POST)
         if form.is_valid():
             member.name  = form.cleaned_data["name"]
             member.job = form.cleaned_data["job"]
@@ -50,7 +68,7 @@ def update_member(request, pk):
         else:
             context = {
                 "form_errors": form.errors,
-                "form":membersForm()
+                "form":MembersForm()
             }
             return render(request,"members/update_member.html",context=context)
 

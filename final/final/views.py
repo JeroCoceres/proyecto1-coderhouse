@@ -8,5 +8,5 @@ def index(request):
 def us(request):
     return render (request, "Us.html" , context={})
 
-def developing(request):
-    return render (request, "developing.html" , context={})    
+def donate(request):
+    return render (request, "donate.html" , context={})    

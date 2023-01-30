@@ -3,7 +3,7 @@ from members.views import membersCreateView, membersListView, update_member, mem
 
 urlpatterns = [
     path('members/', membersListView.as_view() ),
-    path("new_member/",membersCreateView.as_view(), name = "new_member"),
+    path("new_member/",membersCreateView, name = "new_member"),
     path("update-member/<int:pk>/",update_member),
     path("delete-member/<int:pk>/",membersDeleteView.as_view()),
 ]

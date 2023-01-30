@@ -12,14 +12,15 @@
         {% csrf_token %}
 
         <table>
-        {{form.as_table}}
+        <p>{{form}} </p>       
+
         </table>
         
         <input type="submit" value="Aceptar">
 
         {% else %}
 
-        <p>Mascota creada</p>
+        <p>integrante creado</p>
 
         {% endif %}
         

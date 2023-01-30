@@ -1,13 +1,14 @@
 from django import forms
 from members.models import Members
 
-class membersForm(forms.Form):
-    name = forms.CharField(max_length=50)
-    job = forms.BooleanField(required=False)
-    is_active = forms.BooleanField(required=False)
+class DateInput(forms.DateInput):
+    input_type = "date"
 
-class MembersForm(forms.ModelForm):
-    class META:
+
+
+class MembersForm(forms.ModelForm,DateInput):
+    class Meta:
         model = Members
+        #template_name = "Members/new_member.html"
         fields = "__all__"
-        
+        widgets= {"since":DateInput()}

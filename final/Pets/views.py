@@ -73,7 +73,6 @@ class dogDeleteView(DeleteView):
 
 
 
-
 #Clases y funcinoes para gatos
 def create_cat(request):
     if request.method == "GET":
