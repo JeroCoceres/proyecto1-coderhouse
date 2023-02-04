@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %} Actualización de perfil de usuario {% endblock %}
+
+{% block body %} 
+<h1>Editar perfil de usuario</h1>
+
+{% if form %}
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        
+        {% csrf_token %}
+
+        <table>
+        {{form.as_table}}
+        </table>
+        
+
+
+        <input type="submit" value="actualizar">
+
+
+{% endif %}
+
+    {% if errors %}
+
+        {{errors}}
+
+    
+    {% endif %}
+    </form>
+
+
+{% endblock %}
+
+

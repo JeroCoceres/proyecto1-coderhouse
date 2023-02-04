@@ -3,32 +3,46 @@
 {% block title %} Lista de Miembros {% endblock %}
 
 {% block header %} 
-<form class="form-inline my-2 my-lg-0" action="/Members/members/" method="GET">
+<form class="form-inline my-2 my-lg-0" action="/members/members/" method="GET">
   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 </form>
 {% endblock %}
 
 {% block body %} 
-<h1>Nosotros</h1>
+<h1>Quienes somos?</h1>
+
+<div class="alert alert-primary" role="alert">
+  Somos una organización sin fines de lucro, de la ciudad de Gualeguaychú, Entre Rios. 
+  Nuestro refugio alberga cientos de animalitos rescatados del abandono y del maltrato, hoy esperan por ser 
+  adoptados por una familia responsable. Estos son los miembros de la organización, quienes hacen posible 
+  que la misma exista gracias el trabajo que día a día hacen a voluntad, sin recibir ninguna retribución.
+</div>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for members in object_list %}
 
   <div class="col">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 24rem;">
         <img src="https://cdn.icon-icons.com/icons2/1369/PNG/512/-person_90382.png"class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{members.name}}</h5> 
           <p class="card-text">{{members.job}}</p>
           <p class="card-text"> {{members.since}} </p>
 
+
+          {% if request.user.is_authenticated %}
+          {% if request.user.is_superuser %}
           <a href="/members/update-member/{{members.pk}}/" class="btn btn-primary" >Editar</a>
           <a href="/members/delete-member/{{members.pk}}/" class="btn btn-danger">Borrar</a>
+          {% endif %}
+          {% endif %}
         </div>
       </div>
+    </div>
     {% endfor %}
-
+  </div>
+    
     {% if request.user.is_authenticated %}
     {% if request.user.is_superuser %}
     <a href="/members/new_member/">
@@ -36,7 +50,7 @@
     </a> 
     {% endif %}
     {% endif %}
-  </div>
+  
 {% endblock %}
-</div>
+
 
