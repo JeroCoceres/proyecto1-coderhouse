@@ -5,9 +5,6 @@ class dogs(models.Model):
     name = models.CharField(max_length=30,verbose_name="Nombre")
     castrated = models.BooleanField(default=False,verbose_name="Castrado")
     vaccine = models.BooleanField(default=False,verbose_name="Vacunado")
-
-    
-
     def __str__(self):
         return(self.name)
 

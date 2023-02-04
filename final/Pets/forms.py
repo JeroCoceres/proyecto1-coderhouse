@@ -1,10 +1,12 @@
 from django import forms
+from Pets.models import dogs
+
+class DateInput(forms.DateInput):
+    input_type = "date"
 
 
-class petsform(forms.Form):
-    name = forms.CharField(max_length=30)
-    castrated = forms.BooleanField(required=False)
-    vaccine = forms.BooleanField(required=False)
-    #birth = forms.DateField()
-    #adoption_date = forms.DateField()
-    #proximas funciones
+class petsform(forms.ModelForm,DateInput):
+    class Meta:
+        model = dogs
+        fields = "__all__"
+        widgets= {"birth_date":DateInput()}

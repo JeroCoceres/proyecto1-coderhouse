@@ -33,8 +33,8 @@
             
             {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
-            <a href="/pets/update-dog/{{cats.pk}}/" class="btn btn-primary" >Editar</a>
-            <a href="/pets/delete-dog/{{cats.pk}}/" class="btn btn-danger">Borrar</a>
+            <a href="/pets/update-dog/{{dogs.pk}}/" class="btn btn-primary" >Editar</a>
+            <a href="/pets/delete-dog/{{dogs.pk}}/" class="btn btn-danger">Borrar</a>
             {% endif %}
             {% endif %}
 
