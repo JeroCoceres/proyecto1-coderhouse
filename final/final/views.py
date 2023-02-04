@@ -10,3 +10,6 @@ def us(request):
 
 def donate(request):
     return render (request, "donate.html" , context={})    
+
+def about(request):
+    return render (request, "about.html",context={})

@@ -105,19 +105,25 @@ def update_user_profile(request):
             form = UserProfileForm(initial={
             "phone":request.user.profile.phone,
             "birth_date":request.user.profile.birth_date,
-            "profile_picture":request.user.profile.profile_picture 
+            "profile_picture":request.user.profile.profile_picture,
+            "address":request.user.profile.address,
+            "blog":request.user.profile.blog,
+            "description":request.user.profile.description,
+            "interested_in_adopting":request.user.profile.interested_in_adopting
             })
             context = { "form" : form}
             return render (request,"users/update_profile.html", context=context)
     
         elif request.method == "POST":
-            form = UserProfileForm(request.POST,request.FILES, instance=request.user.profile)
-            print(request.POST)
-            print(request.FILES)
+            form = UserProfileForm(data = request.POST,files = request.FILES)
             if form.is_valid():
                 request.user.profile.phone = form.cleaned_data.get("phone")
                 request.user.profile.birth_date = form.cleaned_data.get("birth_date")
+                request.user.profile.address = form.cleaned_data.get("address")
+                request.user.profile.interested_in_adopting = form.cleaned_data.get("interested_in_adopting")
                 request.user.profile.profile_picture = form.cleaned_data.get("profile_Picture")
+                request.user.profile.blog = form.cleaned_data.get("blog")
+                request.user.profile.description = form.cleaned_data.get("description")
                 request.user.profile.save()
             return  render(request,"index.html")
         context = {

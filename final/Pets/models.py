@@ -1,13 +1,11 @@
 from django.db import models
 
-#Proximas funciones
 
 class dogs(models.Model):
     name = models.CharField(max_length=30,verbose_name="Nombre")
     castrated = models.BooleanField(default=False,verbose_name="Castrado")
     vaccine = models.BooleanField(default=False,verbose_name="Vacunado")
-    #birth = models.DateField(verbose_name="Edad")
-    #adoption_date = models.DateField(verbose_name="Fecha de adopción")
+
     
 
     def __str__(self):
@@ -21,8 +19,7 @@ class cats(models.Model):
     name = models.CharField(max_length=30,verbose_name="Nombre")
     castrated = models.BooleanField(verbose_name="Castrado")
     vaccine = models.BooleanField(verbose_name="Vacunado")
-    #birth = models.DateField(verbose_name="Edad")
-    #adoption_date = models.DateField(verbose_name="Fecha de adopción")
+
     
     def __str__(self):
         return(self.name)   
@@ -35,8 +32,7 @@ class more_pets(models.Model):
     name = models.CharField(max_length=30,verbose_name="Nombre")
     castrated = models.BooleanField(verbose_name="Castrado")
     vaccine = models.BooleanField(verbose_name="Vacunado")
-    #birth = models.DateField(verbose_name="Edad")
-    #adoption_date = models.DateField(verbose_name="Fecha de adopción")
+
 
     def __str__(self):
         return(self.name)

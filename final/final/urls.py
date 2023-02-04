@@ -18,7 +18,7 @@ from django.urls import path
 from final.settings import MEDIA_ROOT,MEDIA_URL
 from django.conf.urls.static import static
 
-from final.views import index, us, donate
+from final.views import index, us, donate, about
 from django.urls import include 
 
 
@@ -28,6 +28,7 @@ urlpatterns = [
     path("", index, name="inicio"), 
     path("nosotros/", us),
     path("donate/",donate),
+    path("about/",about),
 
 
     path("pets/", include("Pets.urls")),
