@@ -11,8 +11,6 @@ class UserProfile(models.Model):
     interested_in_adopting = models.BooleanField(default=False,verbose_name="Interesado en adoptar")
     profile_picture = models.ImageField(upload_to="profile_images",null=True,blank=True,verbose_name="Foto de perfil")
 
-    def __str__(self):
-        return(self.name)    
     class Meta:
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios" 

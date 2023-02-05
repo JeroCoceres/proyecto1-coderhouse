@@ -58,7 +58,6 @@ def update_user(request):
     if request.method == "GET":
         user = request.user
         form = UserUpdateForm(initial = {
-            "username":user.username,
             "first_name":user.first_name,
             "last_name":user.last_name
         } 

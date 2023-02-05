@@ -6,7 +6,6 @@ from users.models import UserProfile
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True, label="Nombre")
     last_name = forms.CharField(max_length=30,required=True, label="Apellido")
-
     class Meta:
         model = User
         fields = ["username","first_name","last_name","email","password1","password2"]
@@ -16,7 +15,7 @@ class UserUpdateForm(forms.ModelForm):
     last_name = forms.CharField(max_length=30,required=True, label="Apellido")
     class Meta:
         model = User
-        fields = ["first_name","last_name","email"]
+        fields = ["first_name","last_name"]
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
